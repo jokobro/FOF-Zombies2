@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-public class PlayerLook : MonoBehaviour {
-
+public class PlayerLook : MonoBehaviour 
+{
     [Header("References")]
     [SerializeField] private Transform cameraHolder;
     [SerializeField] private Transform orientation;
@@ -32,7 +32,5 @@ public class PlayerLook : MonoBehaviour {
 
         orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);
         cameraHolder.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
-
     }
-
 }

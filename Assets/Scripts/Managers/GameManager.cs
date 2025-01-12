@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     [SerializeField] private TMP_Text pointsUiText;
     [SerializeField] private float Points;
     public float scoreMultiplier = 1f;

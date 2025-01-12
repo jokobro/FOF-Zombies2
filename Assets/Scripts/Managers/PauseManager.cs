@@ -12,9 +12,8 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        gameActionMap = inputActions.FindActionMap("Player");
+        gameActionMap = inputActions.FindActionMap("Game");
         uiActionMap = inputActions.FindActionMap("UI");
-
         gameActionMap.Enable();
         uiActionMap.Disable();
     }

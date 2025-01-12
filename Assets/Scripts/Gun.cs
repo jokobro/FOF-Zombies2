@@ -48,7 +48,8 @@ public class Gun : MonoBehaviour {
                 timeSinceLastShot = 0;
                 OnGunShot();
             }
-            Debug.Log("is shooting");        }
+            Debug.Log("is shooting");        
+        }
     }
 
     private void Update() {
