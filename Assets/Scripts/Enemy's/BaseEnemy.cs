@@ -5,8 +5,8 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour, IDamageable
 {
     [SerializeField] private List<GameObject> pickups;
-    private GameManager gameManager;
-    public int scoreAmount;
+    GameManager gameManager;
+    public int pointsAmount;
     public float health;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class BaseEnemy : MonoBehaviour, IDamageable
         health -= damage;
         if (health <= 0)
         {
-            GameManager.Instance.AddScore(scoreAmount);
+           /* GameManager.Instance.AddScore(pointsAmount);*/
             Destroy(this.gameObject);
         }
     }
