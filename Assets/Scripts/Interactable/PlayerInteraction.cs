@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float playerInReach = 3f;
-    Interactable currentInteractable;
+    private Interactable currentInteractable;
 
     private void Update()
     {
@@ -26,20 +26,36 @@ public class PlayerInteraction : MonoBehaviour
             {
                 Interactable newInteractable = hit.collider.GetComponent<Interactable>();
 
-                if (newInteractable.enabled)
+                if (newInteractable != null && newInteractable.enabled)
                 {
-                    SetNewCurrentInteractable(newInteractable);
-                }
-                else // als new interactable niet aangezet is
-                {
-                    DisableCurrentInteractable();
+                    PerkUpgrades perkUpgrades = newInteractable.GetComponent<PerkUpgrades>();
+
+                    // Controleer of de perk al is gekocht
+                    if (perkUpgrades != null && !PerkAlreadyBought(perkUpgrades))
+                    {
+                        SetNewCurrentInteractable(newInteractable);
+                        return;
+                    }
                 }
             }
         }
-        else //als niks in ranche is
+        else
         {
             DisableCurrentInteractable();
         }
+    }
+
+    private bool PerkAlreadyBought(PerkUpgrades perkUpgrades)
+    {
+        if (perkUpgrades.IsSpeedColaBought ||
+             perkUpgrades.IsQuickReviveBought ||
+             perkUpgrades.IsJuggernautBought() ||
+             perkUpgrades.IsDoubleTapBougt())
+        {
+            HUDcontroller.instance.DisableInteractionText(); // Verberg tekst als een perk is gekocht
+            return true;
+        }
+        return false;
     }
 
     private void SetNewCurrentInteractable(Interactable newInteractable)
@@ -51,9 +67,6 @@ public class PlayerInteraction : MonoBehaviour
     private void DisableCurrentInteractable()
     {
         HUDcontroller.instance.DisableInteractionText();
-        if (currentInteractable)
-        {
-            currentInteractable = null;
-        }
+        currentInteractable = null;
     }
 }

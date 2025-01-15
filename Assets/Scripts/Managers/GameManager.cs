@@ -17,12 +17,17 @@ public class GameManager : MonoBehaviour
  
     private void Start()
     {
-        pointsUiText.SetText(Points.ToString());
+        UpdatePointsUI();
     }
 
     public void AddScore(int pointsAmount)
     {
         Points += Mathf.RoundToInt(pointsAmount * scoreMultiplier);
+        pointsUiText.SetText($"{Points}");
+    }
+
+    public void UpdatePointsUI()
+    {
         pointsUiText.SetText($"{Points}");
     }
 }

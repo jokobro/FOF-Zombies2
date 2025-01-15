@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Settings")]
     [SerializeField] private float gravityMultiplier = 3.0f;
-    [SerializeField] private float playerHealth = 100f;
     [SerializeField] private int points = 500;
+    public float playerHealth = 100f;
+
 
     private CharacterController characterController;
     private GameManager gameManager;
