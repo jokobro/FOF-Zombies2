@@ -7,9 +7,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private TMP_Text pointsUiText;
-    [SerializeField] private float Points;
+    public float Points;
     public float scoreMultiplier = 1f;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+ 
     private void Start()
     {
         pointsUiText.SetText(Points.ToString());

@@ -1,17 +1,14 @@
-using System;
-using UnityEngine;
 using System.Collections;
-using UnityEngine.EventSystems;
+using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
-public class PlayerController : MonoBehaviour 
+public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform orientation;
-    
+
     [Header("Movement")]
     [SerializeField] private float jumpPower = 10f;
-    [SerializeField] private float walkSpeed = 5f;
+    public float walkSpeed = 5f;
 
     [Header("Drag")]
     private float gravity = -9.81f;
@@ -21,18 +18,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravityMultiplier = 3.0f;
     [SerializeField] private float playerHealth = 100f;
     [SerializeField] private int points = 500;
-    
+
     private CharacterController characterController;
     private GameManager gameManager;
-
     private Vector3 moveDirection;
     private Vector2 inputMovement;
     private float horizontalInput;
     private float verticalInput;
     private bool isDoublePointsActive;
-    
+    public static PlayerController Instance;
+
+
     private void Awake()
     {
+        Instance = this;
         characterController = GetComponent<CharacterController>();
         gameManager = FindAnyObjectByType<GameManager>();
     }
@@ -53,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             verticalVelocity += gravity * gravityMultiplier * Time.deltaTime;
         }
-        moveDirection.y = verticalVelocity;  
+        moveDirection.y = verticalVelocity;
     }
 
     private void HandleMovement()
