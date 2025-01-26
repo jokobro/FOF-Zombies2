@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int points = 500;
     public float playerHealth = 100f;
 
-
     private CharacterController characterController;
     private GameManager gameManager;
     private Vector3 moveDirection;
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
     private bool isDoublePointsActive;
     public static PlayerController Instance;
-
 
     private void Awake()
     {

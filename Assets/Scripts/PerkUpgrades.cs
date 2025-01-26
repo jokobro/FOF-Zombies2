@@ -8,8 +8,8 @@ public class PerkUpgrades : MonoBehaviour
     private bool isQuickReviveBought = false;
     private bool hasUsedQuickRevive = false;
     
-    public bool IsSpeedColaBought => isSpeedColaBought; // Voor externe controle
-    public bool IsQuickReviveBought => isQuickReviveBought && !hasUsedQuickRevive; // Voor externe controle
+    public bool IsSpeedColaBought => isSpeedColaBought; 
+    public bool IsQuickReviveBought => isQuickReviveBought && !hasUsedQuickRevive; 
 
     public void HandleBuyingSpeedCola()
     {
