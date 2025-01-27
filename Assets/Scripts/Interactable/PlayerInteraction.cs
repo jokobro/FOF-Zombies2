@@ -49,8 +49,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (perkUpgrades.IsSpeedColaBought ||
              perkUpgrades.IsQuickReviveBought ||
-             perkUpgrades.IsJuggernautBought() ||
-             perkUpgrades.IsDoubleTapBougt())
+             perkUpgrades.IsJunngernautPerkBought ||
+             perkUpgrades.IsDoubleTapBought)
         {
             HUDcontroller.instance.DisableInteractionText(); // Verberg tekst als een perk is gekocht
             return true;
